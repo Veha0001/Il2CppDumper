@@ -17,11 +17,12 @@ jobs:
       - name: Publish for ARM64
         run: |
           dotnet publish ./Il2CppDumper/Il2CppDumper.csproj \
-            -r linux-arm64 \
-            --self-contained true \
-            --configuration Release \
-            --output ./publish-arm64
-
+          -r linux-arm64 \
+          --self-contained true \
+          --configuration Release \
+          -f net6.0 \  # Specify target framework 
+          --output ./publish-arm64
+          
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
